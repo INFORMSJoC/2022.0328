@@ -39,4 +39,4 @@ This script builds seven methods to project a vector onto a l1 ball: serial sort
 
 ### subfiles to support l1ball_wrap.jl
 
-simplex_wrap.jl is a necessary script in running lball_wrap.jl.
+simplex_wrap.jl is a necessary script in running l1ball_wrap.jl.
