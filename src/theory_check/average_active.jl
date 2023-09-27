@@ -1,7 +1,7 @@
 using Random, Distributions, BenchmarkTools
-#using Plots
-#import PyPlot
-#pyplot()
+using Plots
+import PyPlot
+pyplot()
 
 """
     test_active(d, b)
