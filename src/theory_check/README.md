@@ -5,6 +5,5 @@
 ```julia
 > include("average_active.jl")
 ```
-![average_active.png](results/average_active.png)
+![average_active.png](2022.0328/results/average_active.png)
 
-[data](data)
