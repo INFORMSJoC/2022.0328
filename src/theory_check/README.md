@@ -17,3 +17,12 @@ This script calculates the number of active terms after applying Filter techniqu
 > include("filter_result.jl")
 ```
 ![filter_result.png](/results/filter_result.png)
+
+## michelot_loop.jl
+
+This scripts calculates the number of active terms after every loop in Michelot's method, and the input vector has a size of $10^6$. Then compare these numbers with series $(10^6)^{2^t}$, where $t$ is the number of iterations. To get the plot result, see the following example.
+
+```julia
+> include("michelot_loop.jl")
+```
+![filter_result.png](/results/michelot_loop.png)
