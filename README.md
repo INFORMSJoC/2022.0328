@@ -82,6 +82,10 @@ All results appearing in the paper are collected in [results](results). Informat
 
 All real-world data that was used is available in [data](data). Other data are generated randomly (with random seed 12345) based on some distributions.
 
+## Licenses
+
+We have [MIT License](License) for all code and [Another License](data/License) for real-world data we used.
+
 ## Acknowledgements
 
 This work has been partially funded by the Office of Naval Research under grant N00014-23-1-2632.
