@@ -1,4 +1,4 @@
-# Replicating Plost in [results](results)
+# Replicating Plots in [results](results)
 
 We organize this tutorial by the type of projections.
 
