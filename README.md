@@ -84,7 +84,7 @@ All real-world data that was used is available in [data](data). Other data are g
 
 ## Licenses
 
-We have [MIT License](LICENSE) for all code and [Another License](data/LICENSE) for real-world data we used.
+We have [MIT License](LICENSE) for all code and [BSD 3-Clause License](data/LICENSE) for real-world data we used.
 
 ## Acknowledgements
 
