@@ -1,7 +1,7 @@
 using Random, Distributions, BenchmarkTools
-#Plots
-#import PyPlot
-#pyplot()
+Plots
+import PyPlot
+pyplot()
 """
     test_filter(y, b)
 This function is same to Filter but return how many terms remaining after Filter.
@@ -73,11 +73,10 @@ for i in 1:19
 end
 println(res1)
 println(res2)
-#=
+
 #plot figure
 plot(10^6:5*10^5:10^7,res1, linewidth=1, label="observed average", line = (:blue,1,:scatter), xlabel = "input size n",
        ylabel ="remaining elements",legend=:topleft)
 plot!(10^6:5*10^5:10^7,res2,label="estimate", line=(:orange, 1, 1))
 savefig("filter_result.png")
 println("Note: generate a new figure named filter_result.png")
-=#
