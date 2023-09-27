@@ -1,5 +1,5 @@
 using Random, Distributions
-#using Plots
+using Plots
 
 """
     test_michelot(y, b)
@@ -72,11 +72,11 @@ let
 end
 println(res1)
 println(res2)
-#=
+
 #plot figure
 plot(1:12,res1, xticks=1:1:12, linewidth=2, label="observed average", line = (:blue,1,:scatter), xlabel = "iterations",
        ylabel ="remaining elements")
 plot!(1:12,res2,label="estimate", line=(:orange, 1, 1))
 savefig("michelot_loop.png")
 println("Note: generate a new figure named michelot_loop.png")
-=#
+
