@@ -103,7 +103,7 @@ function psgd_parallel_sortscan(f::Function, A, label, iter, stepsize, b, toler,
 end
 
 
-function get_result_kdd10()
+function get_result()
     res_condat = []
     res_michelot = []
     res_sortscan = []
