@@ -1,4 +1,4 @@
-# Description for Scripts
+# Description of Scripts
 
 ## simplex_wrap.jl
 
