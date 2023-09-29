@@ -59,3 +59,26 @@ Use the following command in your console, then you can get the test result.
 > res_parity_polytope #this list includes runtimes of [serial sort and scan, parallel sort and scan, parallel and partial scan, serial and parallel Michelot's methods, serial and parallel Condat's methods]
 ```
 
+## real_data_kdd10.jl and real_data_kdd12.jl
+
+The two scripts use marco @benchmark to test runtimes of simplex projection and l1 ball projection with both serial and parallel (in different numbers of cores) in two real-world data (see [README.md (in data folder)](/data/README.md)), which is a crucial step in the Lasso method.
+
+Use the following command in your console, then you can get the test result.
+
+```julia
+> include("real_data_kdd10.jl")
+> res_ss_simplex, res_sps_simplex, res_m_simplex, res_c_simplex, res_ss_ball, res_sps_ball, res_m_ball, res_c_ball = get_result()
+> res_ss_simplex #this list includes runtims of [serial sort and scan, parallel sort and scan in different cores]
+```
+
+### support files
+
+Please make sure moving two real-world datasets with the names kdd10.txt and kdd12.txt to the work folder, and run real_data_reader.jl to preprocess them for real_data_kdd10.jl and real_data_kdd12.jl.
+
+```julia
+> include("real_data_reader.jl")
+```
+
+
+
+
