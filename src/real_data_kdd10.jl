@@ -102,144 +102,344 @@ function psgd_parallel_sortscan(f::Function, A, label, iter, stepsize, b, toler,
     return t
 end
 
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_serial(l1ball_condat_s, kdda2, label3, 10, 0.01, 1, 0.01)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.001)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.001)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.001)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.001)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.001)
-end
-println(median(t))
 
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_serial(l1ball_michelot_s, kdda2, label3, 10, 0.01, 1, 0.01)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.0)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.0)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.0)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.0)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.0)
-end
-println(median(t))
+function get_result_kdd10()
+    res_condat = []
+    res_michelot = []
+    res_sortscan = []
+    res_sortPscan = []
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_condat_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.001)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.001)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.001)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.001)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.001)
+    end
+    println(median(t))
+    push!(res_condat, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_michelot_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.0)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.0)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.0)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.0)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.0)
+    end
+    println(median(t))
+    push!(res_michelot, median(t))
+    
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_sortscan_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    push!(res_sortPscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
+    end
+    println(median(t))
+    push!(res_sortPscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
+    end
+    println(median(t))
+    push!(res_sortPscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
+    end
+    println(median(t))
+    push!(res_sortPscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
+    end
+    println(median(t))
+    push!(res_sortPscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)
+    end
+    println(median(t))
+    push!(res_sortscan, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)
+    end
+    println(median(t))
+    end
+    push!(res_sortPscan, median(t))
 
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_serial(l1ball_sortscan_s, kdda2, label3, 10, 0.01, 1, 0.01)
-end
-println(median(t))
+    res_c_ball = []
+    res_m_ball = []
+    res_ss_ball = []
+    res_sps_ball = []
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_condat_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_c_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.001)
+    end
+    println(median(t))
+    push!(res_c_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.001)
+    end
+    println(median(t))
+    push!(res_c_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.001)
+    end
+    println(median(t))
+    push!(res_c_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.001)
+    end
+    push!(res_c_ball, median(t))
+    println(median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_condat_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.001)
+    end
+    println(median(t))
+    push!(res_c_ball, median(t))
 
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_michelot_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 8, 0.0)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 16, 0.0)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 24, 0.0)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 32, 0.0)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel(l1ball_michelot_p, kdda2, label3, 10, 0.01, 1, 0.01, 40, 0.0)
+    end
+    println(median(t))
+    push!(res_m_ball, median(t))
+
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_serial(l1ball_sortscan_s, kdda2, label3, 10, 0.01, 1, 0.01)
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    push!(res_sps_ball, median(t))
+
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
+    end
+    println(median(t))
+    push!(res_sps_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
+    end
+    println(median(t))
+    push!(res_sps_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
+    end
+    println(median(t))
+    push!(res_sps_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
+    end
+    println(median(t))
+    push!(res_sps_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)  
+    end
+    println(median(t))
+    push!(res_ss_ball, median(t))
+    Random.seed!(12345);
+    t = zeros(20)
+    for i in 1:20
+        t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)
+    end
+    println(median(t))
+    push!(res_sps_ball, median(t))
 end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 8)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 16)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 24)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 32)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)
-end
-println(median(t))
-Random.seed!(12345);
-t = zeros(20)
-for i in 1:20
-    t[i] = psgd_parallel_sortscan(l1ball_sortPscan_p, kdda2, label3, 10, 0.01, 1, 0.01, 40)
-end
-println(median(t))
