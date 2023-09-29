@@ -442,4 +442,6 @@ function get_result_kdd10()
     end
     println(median(t))
     push!(res_sps_ball, median(t))
+
+    return res_sortscan, res_sortPscan, res_michelot, res_condat, res_ss_ball, res_sps_ball, res_m_ball, res_c_ball
 end
