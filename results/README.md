@@ -30,7 +30,7 @@ Then you get
 ![simplex_unif_comp.png](simplex_unif_comp.png)
 ![simplex_sortscan.png](simplex_sortscan.png)
 
-For the second way, just upload simplex projection.ipynb and multiple length comparision.ipynb to JupyterNotebook with a Python 3 kernal, then you can get the 14 plots.
+For the second way, just upload simplex projection.ipynb and multiple length comparision.ipynb to JupyterNotebook with a Python 3 kernal or IPython, then you can get the 14 plots.
 
 ## Projection onto an l1 ball
 
@@ -53,6 +53,8 @@ Then, you can write l1ball_absolute and l1ball_relative to a file or directly co
 Then you get
 ![l1ball_comp.png](l1ball_comp.png)
 ![l1ball.png](l1ball.png)
+
+Or just use JupyterNotebook with Python 3 kernal or IPython to run l1ball.ipynb to get the 2 plots.
 
 ## Projections onto a weighted simplex
 
