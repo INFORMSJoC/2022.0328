@@ -20,7 +20,7 @@ to show that we build code for both serial and parallel methods fairly.
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("fairness_test.jl")
+julia> include("fairness_test.jl")
 ```
 
 ## l1ball_runtime_benchmark.jl
@@ -30,9 +30,9 @@ This script uses macro @benchmark to test runtimes of 3 serial $\ell_1$ ball pro
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("l1ball_runtime_benchmark.jl")
-> res_sortscan, res_sortPscan, res_michelot, res_condat = get_result()
-> res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
+julia> include("l1ball_runtime_benchmark.jl")
+julia> res_sortscan, res_sortPscan, res_michelot, res_condat = get_result()
+julia> res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
 ```
 
 ## parity_polytope.jl and paritypolytope_runtime_benckmark.jl
@@ -40,12 +40,12 @@ Use the following command in your console, then you can get the test result.
 parity_polytope.jl builds two functions for serial and parallel parity polytope projection methods separately. There is a function argument to determine which simplex projection method to use in parity polytope projection.
 
 ```julia
-> include("parity_polytope.jl")
-> using Random, Distributions
-> data = rand(1_000_000 - 1). + 1 #generate an input vector i.i.d. U[1, 2] with size of 999999
-> parity_s(sort_scan_s, data) #using serial sort and scan to finish the projection onto a parity polytope
-> spa = 0.0001 #set a sparsity rate to terminate parallel computing early
-> parity_s(michelot_p, data, spa) #using parallel Michelot's method to finish the projection onto a parity polytope
+julia> include("parity_polytope.jl")
+julia> using Random, Distributions
+julia> data = rand(1_000_000 - 1). + 1 #generate an input vector i.i.d. U[1, 2] with size of 999999
+julia> parity_s(sort_scan_s, data) #using serial sort and scan to finish the projection onto a parity polytope
+julia> spa = 0.0001 #set a sparsity rate to terminate parallel computing early
+julia> parity_s(michelot_p, data, spa) #using parallel Michelot's method to finish the projection onto a parity polytope
 ```
 
 paritypolytope_runtime_benckmark.jl uses macro @benchmark to test runtims of 7 methods in both parity polytope projection and simplex projection (simplex projection is a substep of parity polytope projection) in a given number of
@@ -54,9 +54,9 @@ cores (and we set it as nthreads(), which is a system argument in julia). The in
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("paritypolytope_runtime_benchmark.jl")
-> res_parity_polytope, res_simplex = get_result()
-> res_parity_polytope #this list includes runtimes of [serial sort and scan, parallel sort and scan, parallel and partial scan, serial and parallel Michelot's methods, serial and parallel Condat's methods]
+julia> include("paritypolytope_runtime_benchmark.jl")
+julia> res_parity_polytope, res_simplex = get_result()
+julia> res_parity_polytope #this list includes runtimes of [serial sort and scan, parallel sort and scan, parallel and partial scan, serial and parallel Michelot's methods, serial and parallel Condat's methods]
 ```
 
 ## real_data_kdd10.jl and real_data_kdd12.jl
@@ -66,9 +66,9 @@ The two scripts use marco @benchmark to test runtimes of simplex projection and 
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("real_data_kdd10.jl")
-> res_ss_simplex, res_sps_simplex, res_m_simplex, res_c_simplex, res_ss_ball, res_sps_ball, res_m_ball, res_c_ball = get_result()
-> res_ss_simplex #this list includes runtims of [serial sort and scan, parallel sort and scan in different cores]
+julia> include("real_data_kdd10.jl")
+julia> res_ss_simplex, res_sps_simplex, res_m_simplex, res_c_simplex, res_ss_ball, res_sps_ball, res_m_ball, res_c_ball = get_result()
+julia> res_ss_simplex #this list includes runtims of [serial sort and scan, parallel sort and scan in different cores]
 ```
 
 ### support files
@@ -76,7 +76,7 @@ Use the following command in your console, then you can get the test result.
 Please make sure moving two real-world datasets with the names kdd10.txt and kdd12.txt to the work folder, and run real_data_reader.jl to preprocess them for real_data_kdd10.jl and real_data_kdd12.jl.
 
 ```julia
-> include("real_data_reader.jl")
+julia> include("real_data_reader.jl")
 ```
 
 ## simplex_benchmark_runtime.jl
@@ -86,9 +86,9 @@ This script uses macro @benchmark to test runtimes of 3 serial simplex projectio
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("simplex_runtime_benchmark.jl")
-> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
-> res_uniform_ss #this list includes runtime results as [serial sort and scan, parallel sort and scan in different numbers of cores], and the input distribution is $u[0,1]$
+julia> include("simplex_runtime_benchmark.jl")
+julia> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
+julia> res_uniform_ss #this list includes runtime results as [serial sort and scan, parallel sort and scan in different numbers of cores], and the input distribution is $u[0,1]$
 ```
 ## unit_test.jl
 
@@ -97,7 +97,7 @@ This script tests whether 7 simplex projection methods return the same projectio
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("unit_test.jl")
+julia> include("unit_test.jl")
 ```
 
 ## wl1ball_benchmark_runtime.jl and wsimplex_benchmark_runtime.jl
@@ -107,9 +107,9 @@ The two scripts use macro @benchmark to test runtimes of 3 serial weighted $\ell
 Use the following command in your console, then you can get the test result.
 
 ```julia
-> include("wl1ball_runtime_benchmark.jl")
-> res_sortscan, res_michelot, res_condat = get_result()
-> res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
+julia> include("wl1ball_runtime_benchmark.jl")
+julia> res_sortscan, res_michelot, res_condat = get_result()
+julia> res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
 ```
 
 ## plot_graphs.py
@@ -120,9 +120,9 @@ Here is an example, and more details can be found in [README.md (in results)](/r
 
 First, generate runtime results from Julia
 ```julia
-> include("simplex_runtime_benchmark.jl")
-> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
-> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
+julia> include("simplex_runtime_benchmark.jl")
+julia> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
+julia> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
 ```
 Then, you can write simplex_unif_absolute to file or directly copy it to Python
 
