@@ -82,4 +82,4 @@ Or just use JupyterNotebook with a Python 3 kernal or IPyhton to run kdd2010.ipy
 
 ## Theory Check
 
-For plots average_active.png, filter_result.png, and micelot_loop, you can get them from [scripts in Julia](src/theory_check). For convenience, we also provide theory_plot.ipynb to generate them directly.
+For plots average_active.png, filter_result.png, and micelot_loop, you can get them from [scripts in Julia](/src/theory_check). For convenience, we also provide theory_plot.ipynb to generate them directly.
