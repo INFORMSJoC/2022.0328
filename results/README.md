@@ -27,8 +27,8 @@ Then, you can write simplex_unif_absolute to a file or directly copy it to Pytho
 ```
 
 Then you get
-!(simplex_unif_comp.png)[simplex_unif_comp.png]
-!(simplex_sortscan.png)[simplex_sortscan.png]
+![simplex_unif_comp.png](simplex_unif_comp.png)
+![simplex_sortscan.png](simplex_sortscan.png)
 
 For the second way, just upload simplex projection.ipynb and multiple length comparision.ipynb to JupyterNotebook with Python 3 kernal, then you can get the 14 plots.
 
