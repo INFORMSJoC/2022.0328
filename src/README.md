@@ -114,9 +114,9 @@ Use the following command in your console, then you can get the test result.
 
 ## plot_graphs.py
 
-This script provides some functions to plot graphs in [result](/result). plot_absolute() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. the fast serial method (usually is Condat's method). plot_relative_simplex() and plot_relative_others() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. corresponding serial methods (e.g. parallel sort and scan vs. serial sort and scan).
+This script provides some functions to plot graphs in [results](/results). plot_absolute() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. the fast serial method (usually is Condat's method). plot_relative_simplex() and plot_relative_others() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. corresponding serial methods (e.g. parallel sort and scan vs. serial sort and scan).
 
-Here is an example, and more details can be found in [README.md (in result)](/result/README.md)
+Here is an example, and more details can be found in [README.md (in results)](/results/README.md)
 
 First, generate runtime results from Julia
 ```julia
