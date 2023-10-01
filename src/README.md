@@ -14,7 +14,7 @@ See [README.md (in weighted_simplex_and_ball)](weighted_simplex_and_ball/README.
 
 ## fairness_test.jl
 
-This script uses macro @benchmark to compare runtimes between serial methods (sort and scan, Michelot's method, Condat's method) vs. their corresponding parallel methods with only 1 core separately. We wan to use this experiment
+This script uses macro @benchmark to compare runtimes between serial methods (sort and scan, Michelot's method, Condat's method) vs. their corresponding parallel methods with only 1 core separately. We want to use this experiment
 to show that we build code for both serial and parallel methods fairly.
 
 Use the following command in your console, then you can get the test result.
@@ -25,7 +25,7 @@ Use the following command in your console, then you can get the test result.
 
 ## l1ball_runtime_benchmark.jl
 
-This script uses macro @benchmark to test runtimes of 3 serial methods (sort and scan, Michelot's method, Condat's method) and 4 parallel methods (sort and scan, sort and partial scan, Michelot's method, Condat's method) in different numbers of cores (8, 16, 24, 32, 40, 48, 56, 64, 72, 80).
+This script uses macro @benchmark to test runtimes of 3 serial $\ell_1$ ball projection methods (sort and scan, Michelot's method, Condat's method) and 4 parallel methods (sort and scan, sort and partial scan, Michelot's method, Condat's method) in different numbers of cores (8, 16, 24, 32, 40, 48, 56, 64, 72, 80). The input vector is i.i.d. $N(0,1)$ with size of $10^8$
 
 Use the following command in your console, then you can get the test result.
 
@@ -37,7 +37,7 @@ Use the following command in your console, then you can get the test result.
 
 ## parity_polytope.jl and paritypolytope_runtime_benckmark.jl
 
-parity_polytope.jl builds two functions for serial and parallel methods separately. There is a function argument to determine which simplex projection method to use in parity polytope projection.
+parity_polytope.jl builds two functions for serial and parallel parity polytope projection methods separately. There is a function argument to determine which simplex projection method to use in parity polytope projection.
 
 ```julia
 > include("parity_polytope.jl")
@@ -49,7 +49,7 @@ parity_polytope.jl builds two functions for serial and parallel methods separate
 ```
 
 paritypolytope_runtime_benckmark.jl uses macro @benchmark to test runtims of 7 methods in both parity polytope projection and simplex projection (simplex projection is a substep of parity polytope projection) in a given number of
-cores (and we set it as nthreads(), which is a system argument in julia).
+cores (and we set it as nthreads(), which is a system argument in julia). The input vector is i.i.d. $U[1,2]$ with size of $10^8 - 1$.
 
 Use the following command in your console, then you can get the test result.
 
@@ -81,7 +81,35 @@ Please make sure moving two real-world datasets with the names kdd10.txt and kdd
 
 ## simplex_benchmark_runtime.jl
 
+This script uses macro @benchmark to test runtimes of 3 serial simplex projection methods (sort and scan, Michelot's method, Condat's method) and 4 parallel methods (sort and scan, sort and partial scan, Michelot's method, Condat's method) in different numbers of cores (8, 16, 24, 32, 40, 48, 56, 64, 72, 80). There are two groups of runtimes that can be obtained from this script: first, fixing the size of the input vector to $10^8$, and testing runtimes for different input distributions, $U[0,1], N(0,1), N(0, 0.001)$ (using the function get_result_length()); second, fixing the input distribution to $N(0,1)$, and testing runtimes for different sizes of the input vector, $10^7, 10^8, 10^9$ (using the function get_result_norm()). 
 
+Use the following command in your console, then you can get the test result.
 
+```julia
+> include("simplex_runtime_benchmark.jl")
+> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
+> res_uniform_ss #this list includes runtime results as [serial sort and scan, parallel sort and scan in different numbers of cores], and the input distribution is $u[0,1]$
+```
+## unit_test.jl
+
+This script tests whether 7 simplex projection methods return the same projection result. The benchmark includes 100 vectors with input distribution $u[0,1]$. We want to use this experiment to show we implement parallel method correctly.
+
+Use the following command in your console, then you can get the test result.
+
+```julia
+> include("unit_test.jl")
+```
+
+## wl1ball_benchmark_runtime.jl and wsimplex_benchmark_runtime.jl
+
+The two scripts use macro @benchmark to test runtimes of 3 serial weighted $\ell_1$ ball (weighted simplex) projection methods (sort and scan, Michelot's method, Condat's method) and 3 parallel methods (sort and scan, Michelot's method, Condat's method) in different numbers of cores (8, 16, 24, 32, 40, 48, 56, 64, 72, 80). The input vector is i.i.d. $N(0,1)$ with size of $10^8$, and the weight is i.i.d. $U[0,1]$.
+
+Use the following command in your console, then you can get the test result.
+
+```julia
+> include("wl1ball_runtime_benchmark.jl")
+> res_sortscan, res_michelot, res_condat = get_result()
+> res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
+```
 
 
