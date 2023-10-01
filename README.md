@@ -76,11 +76,18 @@ pkg> add PACKAGE_NAME    # Press ']' to enter the Pkg REPL mode.
 
 ## Replicating
 
-All results appearing in the paper are collected in [results](results). Information on how to reproduce these results can be found in the [README.md (in results)](results/README.md). Note that, since the two real datasets [kdd2010](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#kdd2010%20(algebra)) and [kdd2012](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#kdd2012) are too large to upload, please download them as the tutorial in [README.md (in results)](results/README.md) and move them to [src](src) before you run [real_data_kdd10.jl](src/real_data_kdd10.jl) and [real_data_kdd12.jl](src/real_data_kdd12.jl) to reproduce results of real-world datasets. 
+All results appearing in the paper are collected in [results](results). Information on how to reproduce these results can be found in the [README.md (in results)](results/README.md) or see the subsection plot_graphs.py in the [README.md (in src)](scr/README.md) for a simple example. Note that, since the two real datasets [kdd2010](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#kdd2010%20(algebra)) and [kdd2012](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary.html#kdd2012) are too large to upload, we split them into some small files. You can combine these subfiles or directly download them as the tutorial in [README.md (in results)](results/README.md) and move them to [src](src) before you run [real_data_kdd10.jl](src/real_data_kdd10.jl) and [real_data_kdd12.jl](src/real_data_kdd12.jl) to reproduce results of real-world datasets. 
 
 ## Data 
 
 All real-world data that was used is available in [data](data). Other data are generated randomly (with random seed 12345) based on some distributions.
+
+Here is an example to generate the random data
+
+```julia
+> using Distributions, Random
+> Random.seed!(12345); data = rand(N(0,1), 1_000_000) #generate a vector with size of 10^6 from the standard normal distribution
+```
 
 ## Licenses
 
