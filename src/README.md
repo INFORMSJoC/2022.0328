@@ -112,4 +112,24 @@ Use the following command in your console, then you can get the test result.
 > res_sortscan #this list includes [serial sort and scan's runtime, parallel sort and scan's runtime in 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 cores]
 ```
 
+## plot_graphs.py
 
+This script provides some functions to plot graphs in [result](/result). plot_absolute() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. the fast serial method (usually is Condat's method). plot_relative_simplex() and plot_relative_others() can generate a comparing graph for speedup for parallel methods with different numbers of cores vs. corresponding serial methods (e.g. parallel sort and scan vs. serial sort and scan).
+
+Here is an example, and more details can be found in [README.md (in result)](/result/README.md)
+
+First, generate runtime results from Julia
+```julia
+> include("simplex_runtime_benchmark.jl")
+> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
+> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
+```
+Then, you can write simplex_unif_absolute to file or directly copy it to Python
+
+```python
+>>> exec(open("plot_graphs.py").read())
+>>> plot_absolute(simplex_unif_absolute, "simplex_unif_comp.png")
+```
+
+Then you get
+![simplex_unif_comp.png](/results/simplex_unif_comp.png)
