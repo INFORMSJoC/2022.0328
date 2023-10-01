@@ -16,15 +16,21 @@ For the first way, generate runtime results from Julia firstly
 > include("simplex_runtime_benchmark.jl")
 > res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
 > simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
+> simplex_sortscan_relative = [res_uniform_ss[2:end]./res_uniform_ss[1], res_standnorm_ss[2:end]./res_standnorms[1], res_smallnorm_ss[2:end]./res_smallnorm_ss[1]]
 ```
-Then, you can write simplex_unif_absolute to file or directly copy it to Python
+Then, you can write simplex_unif_absolute to a file or directly copy it to Python
 
 ```python
 >>> exec(open("plot_graphs.py").read())
 >>> plot_absolute(simplex_unif_absolute, "simplex_unif_comp.png")
+>>> plot_relative_simplex(simplex_sortscan_relative, "simplex_sortscan.png")
 ```
 
-For the second way, just upload simplex projection.ipynb to JupyterNotebook with Python 3 kernal, then you can get the 7 plots.
+Then you get
+!(simplex_unif_comp.png)[simplex_unif_comp.png]
+!(simplex_sortscan.png)[simplex_sortscan.png]
+
+For the second way, just upload simplex projection.ipynb and multiple length comparision.ipynb to JupyterNotebook with Python 3 kernal, then you can get the 14 plots.
 
 ## Projection onto an l1 ball
 
