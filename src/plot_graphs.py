@@ -21,7 +21,7 @@ def plot_absolute(runtime_matrix, fast_runtime, fig_name)
   plt.savefig("fig_name", format="png", dpi=resolution_value)
   plt.show()
 
-def plot_relative(runtime_matrix, serial_runtime, fig_name)
+def plot_relative_simplex(runtime_matrix, serial_runtime, fig_name)
   cores = [1, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
   y1 = runtime_matrix[1, :]./serial_runtime[1]
   y2 = runtime_matrix[2, :]./serial_runtime[2]
@@ -37,3 +37,21 @@ def plot_relative(runtime_matrix, serial_runtime, fig_name)
   plt.savefig("fig_name", format="png", dpi=resolution_value)
   plt.show()
   
+def plot_relative_others(runtime_matrix, serial_runtime, fig_name)
+  cores = [1, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
+  cores = [1, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80]
+  y1 = runtime_matrix[1, :]./serial_runtime[1]
+  y2 = runtime_matrix[2, :]./serial_runtime[2]
+  y3 = runtime_matrix[3, :]./serial_runtime[3]
+  y4 = runtime_matrix[4, :]./serial_runtime[4]
+  plt.plot(cores[1:11], y4, 's-', label = "(P)Condat", color = "red")
+  plt.plot(cores[1:11], y3, 'o-', label = "(P)Michelot", color = "blue")
+  plt.plot(cores[1:11], y2, '<-', label = "(P)Sort and (P)Scan", color = "orange")
+  plt.plot(cores[1:11], y1, '>-', label = "(P)Sort and Scan", color = "green")
+  plt.ylabel("relative speedup")
+  plt.xlabel("number of cores")
+  plt.xticks([8, 16, 24, 32, 40, 48, 56, 64, 72, 80])
+  plt.legend()
+  resolution_value = 300
+  plt.savefig("fig_name", format="png", dpi=resolution_value)
+  plt.show()
