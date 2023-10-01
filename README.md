@@ -85,8 +85,8 @@ All real-world data that was used is available in [data](data). Other data are g
 Here is an example to generate the random data
 
 ```julia
-> using Distributions, Random
-> Random.seed!(12345); data = rand(N(0,1), 1_000_000) #generate a vector with size of 10^6 from the standard normal distribution
+julia> using Distributions, Random
+julia> Random.seed!(12345); data = rand(N(0,1), 1_000_000) #generate a vector with size of 10^6 from the standard normal distribution
 ```
 
 ## Licenses
