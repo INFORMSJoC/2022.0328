@@ -1,6 +1,6 @@
 # Replicating Plots in [results](results)
 
-We organize this tutorial by the type of projections. There are two ways to reproduce our plots. First, you can use our plot functions from our [python script](/src/plot_graphs.py). You need to generate the necessary runtime results from Julia scripts and send the results to Python. Then you can generate the plots in this folder. Second, since the runtime results may be variant in different devices or even different system statuses, we also provide our plotting files (in .ipynb) with runtime results reported in our paper. You also can generate the plot directly from these files.
+We organize this tutorial by the type of projections. There are two ways to reproduce our plots. First, you can use our plot functions from our [python script](/src/plot_graphs.py). You need to generate the necessary runtime results from Julia scripts and send the results to Python. Then you can generate the plots from this folder. Second, since the runtime results may be variant in different devices or even different system statuses, we also provide our plotting files (in .ipynb) with runtime results reported in our paper. You also can generate the plot directly from these files.
 
 ## Projection onto a simplex
 
