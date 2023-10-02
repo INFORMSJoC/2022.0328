@@ -13,10 +13,10 @@ Here is an example:
 
 For the first way, generate runtime results from Julia firstly
 ```julia
-> include("simplex_runtime_benchmark.jl")
-> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
-> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
-> simplex_sortscan_relative = [res_uniform_ss[2:end]./res_uniform_ss[1], res_standnorm_ss[2:end]./res_standnorms[1], res_smallnorm_ss[2:end]./res_smallnorm_ss[1]]
+julia> include("simplex_runtime_benchmark.jl")
+julia> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
+julia> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
+julia> simplex_sortscan_relative = [res_uniform_ss[2:end]./res_uniform_ss[1], res_standnorm_ss[2:end]./res_standnorms[1], res_smallnorm_ss[2:end]./res_smallnorm_ss[1]]
 ```
 Then, you can write simplex_unif_absolute and simplex_sortscan_relative to a file or directly copy it to Python
 
@@ -37,10 +37,10 @@ For the second way, just upload simplex projection.ipynb and multiple length com
 Run the script l1ball_runtime_benchmark.jl in [src](src) with 80 cores, you can get runtime results for input vector $d$ with the size of $10^8$ and distribution $N(0,1)$; then you can get the plots: l1ball_comp.png, l1ball.png
 
 ```julia
-> include("l1ball_runtime_benchmark.jl")
-> res_sortscan, res_sortPscan, res_michelot, res_condat = get_result()
-> l1ball_absolute = [res_sortscan[2:end]/res_condat[1], res_sortPscan[2:end]/res_condat[1], res_michelot[2:end]/res_condat[1], res_condat[2:end]/res_condat[1]]
-> l1ball_relative = [res_sortscan[2:end]/res_sortscan[1], res_sortPscan[2:end]/res_sortPscan[1], res_michelot[2:end]/res_michelot[1], res_condat[2:end]/res_condat[1]]
+julia> include("l1ball_runtime_benchmark.jl")
+julia> res_sortscan, res_sortPscan, res_michelot, res_condat = get_result()
+julia> l1ball_absolute = [res_sortscan[2:end]/res_condat[1], res_sortPscan[2:end]/res_condat[1], res_michelot[2:end]/res_condat[1], res_condat[2:end]/res_condat[1]]
+julia> l1ball_relative = [res_sortscan[2:end]/res_sortscan[1], res_sortPscan[2:end]/res_sortPscan[1], res_michelot[2:end]/res_michelot[1], res_condat[2:end]/res_condat[1]]
 ```
 Then, you can write l1ball_absolute and l1ball_relative to a file or directly copy it to Python
 
