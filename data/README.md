@@ -1,6 +1,6 @@
 # Data for replication
 
-Since the data is too large to upload, we split them into small files and cache them into two folders. You can run data_combine.jl to get two data files for running [real_data_kdd10.jl](/src/real_data_kdd10.jl) and [real_data_kdd12.jl](/src/real_data_kdd12.jl).
+Since the data is too large to upload, we split them into small files and save them into two folders. You can run data_combine.jl to get two data files for running [real_data_kdd10.jl](/src/real_data_kdd10.jl) and [real_data_kdd12.jl](/src/real_data_kdd12.jl).
 
 ```julia
 julia> include("data_combine.jl")
