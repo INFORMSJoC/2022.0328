@@ -48,7 +48,7 @@ julia> spa = 0.0001 #set a sparsity rate to terminate parallel computing early
 julia> parity_s(michelot_p, data, spa) #using parallel Michelot's method to finish the projection onto a parity polytope
 ```
 
-paritypolytope_runtime_benckmark.jl uses macro @benchmark to test runtims of 7 methods in both parity polytope projection and simplex projection (simplex projection is a substep of parity polytope projection) in a given number of
+paritypolytope_runtime_benckmark.jl uses macro @benchmark to test runtimes of 7 methods in both parity polytope projection and simplex projection (simplex projection is a substep of parity polytope projection) in a given number of
 cores (and we set it as nthreads(), which is a system argument in julia). The input vector is i.i.d. $U[1,2]$ with size of $10^8 - 1$.
 
 Use the following command in your console, then you can get the test result.
@@ -73,7 +73,7 @@ julia> res_ss_simplex #this list includes runtims of [serial sort and scan, para
 
 ### support files
 
-Please make sure moving two real-world datasets with the names kdd10.txt and kdd12.txt to the work folder, and run real_data_reader.jl to preprocess them for real_data_kdd10.jl and real_data_kdd12.jl.
+Please make sure to move two real-world datasets with the names kdd10.txt and kdd12.txt to the work folder, and run real_data_reader.jl to preprocess them for real_data_kdd10.jl and real_data_kdd12.jl.
 
 ```julia
 julia> include("real_data_reader.jl")
@@ -124,7 +124,7 @@ julia> include("simplex_runtime_benchmark.jl")
 julia> res_uniform_ss, res_standnorm_ss, res_smallnorm_ss, res_uniform_sps, res_standnorm_sps, res_smallnorm_sps, res_uniroms_m, res_standnorm_m, res_smallnorm_m, res_uniform_c, res_standnorm_c, res_smallnorm_c = get_result_length()
 julia> simplex_unif_absolute = [res_uniform_ss[2:end]./res_uniform_c[1], res_uniform_sps[2:end]./res_uniform_c[1], res_uniform_m[2:end]./res_uniform_c[1], res_uniform_c[2:end]./res_uniform_c[1]]
 ```
-Then, you can write simplex_unif_absolute to file or directly copy it to Python
+Then, you can write simplex_unif_absolute to the file or directly copy it to Python
 
 ```python
 >>> exec(open("plot_graphs.py").read())
