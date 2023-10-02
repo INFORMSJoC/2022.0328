@@ -7,7 +7,7 @@ We organize this tutorial by the type of projections. There are two ways to repr
 Run the script simplex_runtim_benchmark.jl in [src](/src) with 80 cores (you can change the number of cores in the script based on your device), you can get runtime results for
 - input vector $d$ with size of $10^8$ and distributions $U[0,1], N(0,1), N(0, 0.001)$; then you can get the plots: simplex_norm_comp.png, simplex_unif_comp.png, simplex_small_norm_comp.png, simplex_sortscan.png, simplex_michelot.png, simplex_condat.png;
 
-- input vector with distribution $N(0,1)$ and size of $10^7, 10^8, 10^9$; then you can get the plots: simplex_107_comp.png, simplex_108_comp.png, simplex_109_comp.png, ss_mlen.png, sps_mlen.png, michelot_mlen.png, condat_mlen.png
+- input vector $d$ with distribution $N(0,1)$ and size of $10^7, 10^8, 10^9$; then you can get the plots: simplex_107_comp.png, simplex_108_comp.png, simplex_109_comp.png, ss_mlen.png, sps_mlen.png, michelot_mlen.png, condat_mlen.png
 
 Here is an example:
 
