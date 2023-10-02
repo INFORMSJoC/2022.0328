@@ -15,30 +15,42 @@ println("Warning: following experiments are for 80 threads!")
 function wsortscan_test()
     Random.seed!(12345); res = @benchmark wsortscan_s($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1)
     println("serial: ", median(res))
+    res_list = [median(res)]
     for i = 1:10
         Random.seed!(12345); res = @benchmark wsortscan_p($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1)
         println(i*8, " : ", median(res))
+        push!(res_list, median(res))
     end
+    return res_list
 end
 
 function wmichelot_test()
     Random.seed!(12345); res = @benchmark wmichelot_s($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1)
     println("serial: ", median(res))
+    res_list = [median(res)]
     for i = 1:10
         Random.seed!(12345); res = @benchmark wmichelot_p($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1, $(i*8))
         println(i*8, " : ", median(res))
+        push!(res_list, median(res))
     end
+    return res_list
 end
 
 function wcondat_test()
     Random.seed!(12345); res = @benchmark wcondat_s($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1)
     println("serial: ", median(res))
+    res_list = [median(res)]
     for i = 1:10
         Random.seed!(12345); res = @benchmark wcondat_p($(rand(Normal(0,1), 10^8)), $(rand(10^8)), 1, $(i*8))
         println(i*8, " : ", median(res))
+        push!(res_list, median(res))
     end
+    return res_list
 end
 
-wsortscan_test()
-wmichelot_test()
-wcondat_test()
+function get_result()
+    res1 = wsortscan_test()
+    res2 = wmichelot_test()
+    res3 = wcondat_test()
+    return res1, res2, res3
+end

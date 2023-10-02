@@ -1,7 +1,7 @@
 using Random, Distributions, BenchmarkTools
-#using Plots
-#import PyPlot
-#pyplot()
+using Plots
+import PyPlot
+pyplot()
 
 """
     test_active(d, b)
@@ -69,11 +69,10 @@ for i in 1:19
 end
 println(res1)
 println(res2)
-#=
+
 #plot figure
 plot(10^6:5*10^5:10^7,res1, linewidth=1, label="observed average", line = (:blue,1,:scatter), xlabel = "input size n",
        ylabel ="active elements",legend=:topleft)
 plot!(10^6:5*10^5:10^7,res2,label="estimate", line=(:orange, 1, 1))
 savefig("average_active.png")
 println("Note: generate a new figure named average_active.png")
-=#
