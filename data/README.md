@@ -3,7 +3,7 @@
 Since the data is too large to upload, we split them into small files and cache them into two folders. You can run data_combine.jl to get two data files for running [real_data_kdd10.jl](/src/real_data_kdd10.jl) and [real_data_kdd12.jl](/src/real_data_kdd12.jl).
 
 ```julia
-> include("data_combine.jl")
+julia> include("data_combine.jl")
 ```
 
 Then you can get kdda.txt and kdd12.txt, and please move them to [src](src) before you run [real_data_kdd10.jl](/src/real_data_kdd10.jl) and [real_data_kdd12.jl](/src/real_data_kdd12.jl).
