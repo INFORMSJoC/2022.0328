@@ -13,4 +13,4 @@ We also provide the data link for downloading. kdda.txt from [kdd2010](https://w
 After downloading them, please unzip and rename them as kdda.txt and kdd12.txt, and move them to [src](/src) before you run [real_data_kdd10.jl](/src/real_data_kdd10.jl) and [real_data_kdd12.jl](/src/real_data_kdd12.jl).
 
 ## License
-See file [License](data/LICENSE) for details.
+See file [License](LICENSE) for details.
