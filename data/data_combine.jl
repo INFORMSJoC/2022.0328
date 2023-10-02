@@ -1,5 +1,7 @@
 #data_combine
 
+using BangBang
+
 begin
     data = []
     for i in 1:8
